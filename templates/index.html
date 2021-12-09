@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<head>
+    <style>
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border:5px solid rgb(128, 235, 119);
+        }
+
+        
+    </style>
+</head>
+
+<div class="center">
+
+    <form class="text-center border border-light p-5" action="success" method="POST">
+        {% csrf_token %}
+
+        <p class="h3 mb-3"><i class="fas fa-coffee"></i> BUY ME A COFFEE!!</p>
+        <label for="name"> Full Name:</label>
+        <input type="text" name="name" class='form-control mb-2' required/>
+        <label for="email"> Email:</label>
+        <input type="email" name="email" class='form-control mb-2' placeholder="abc@example.com"/>
+        
+<br/>
+        <!-- Stripe INTEGRATION HERE -->
+
+        <script src="https://checkout.stripe.com/checkout.js" data-key="pk_test_51K3ZMSSF0myh9diyUvdDave1qMKGKI0l6JqUFG1AL5OecQ23SBTXmbjVA5OzcWGQqPhvzaHBTWnpwIydwLtWBDGB00RHbF6FZY" class='stripe-button'
+            data-amount='5000' data-currency="INR" data-order_id="{{payment.id}}" data-buttontext="Pay with Stripe"
+            data-name="Stripe payment" data-description="Django project"
+            data-image="https://image.pngaaa.com/749/2919749-middle.png" data-prefill.name="PC" data-prefill.email="pc123@gmail.com"
+            data-theme.color="#222"></script>
+    </form>
+
+</div>
+
+
+</div>
+{% endblock %}
